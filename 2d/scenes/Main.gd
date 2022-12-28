@@ -59,12 +59,15 @@ func _on_HUD_start_game():
 func game_over():
 	$ScoreTimer.stop()
 	$MobTimer.stop()
+	$Music.stop()
+	$DeathSound.play()
 	$HUD.show_game_over()
 
 func new_game():
 	score = 0
 	$HUD.update_score(score)
 	get_tree().call_group("mobs", "queue_free")
+	$Music.play()
 	$Player.start($StartPosition.position)
 	$HUD.show_message("Get Ready")
 	$StartTimer.start()
