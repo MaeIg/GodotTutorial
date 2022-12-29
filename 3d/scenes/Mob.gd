@@ -1,5 +1,8 @@
 extends KinematicBody
 
+# Emitted when the player jumped on the mob.
+signal squashed
+
 # Minimum speed of the mob in meters per second.
 export var min_speed = 10
 # Maximum speed of the mob in meters per second.
@@ -31,3 +34,7 @@ func initialize(start_position, player_position):
 	velocity = Vector3.FORWARD * random_speed
 	# We then rotate the vector based on the mob's Y rotation to move in the direction it's looking.
 	velocity = velocity.rotated(Vector3.UP, rotation.y)
+
+func squash():
+	emit_signal("squashed")
+	queue_free()
