@@ -12,6 +12,12 @@ func _physics_process(_delta):
 	# warning-ignore:return_value_discarded
 	move_and_slide(velocity)
 
+
+
+func _on_VisibilityNotifier_screen_exited():
+	queue_free()
+
+
 # We will call this function from the Main scene.
 func initialize(start_position, player_position):
 	# We position the mob and turn it so that it looks at the player.
