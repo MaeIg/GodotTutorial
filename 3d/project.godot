@@ -17,6 +17,10 @@ _global_script_class_icons={
 config/name="Squash the Creeps (3D)"
 config/icon="res://icon.png"
 
+[autoload]
+
+MusicPlayer="*res://scenes/MusicPlayer.tscn"
+
 [display]
 
 window/size/width=720
