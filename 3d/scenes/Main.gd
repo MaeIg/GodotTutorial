@@ -4,6 +4,7 @@ export (PackedScene) var mob_scene
 
 func _ready():
 	randomize()
+	$UserInterface/Retry.hide()
 
 
 func _on_MobTimer_timeout():
@@ -27,3 +28,4 @@ func _on_MobTimer_timeout():
 
 func _on_Player_hit():
 	$MobTimer.stop()
+	$UserInterface/Retry.show()
