@@ -6,6 +6,11 @@ func _ready():
 	randomize()
 	$UserInterface/Retry.hide()
 
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_accept") and $UserInterface/Retry.visible:
+		# warning-ignore:return_value_discarded
+		get_tree().reload_current_scene()
+
 
 func _on_MobTimer_timeout():
 	# Create a new instance of the Mob scene.
