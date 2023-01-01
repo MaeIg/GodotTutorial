@@ -20,6 +20,9 @@ func _on_MobTimer_timeout():
 	mob.initialize(mob_spawn_location.translation, player_position)
 
 	add_child(mob)
+	
+	# We connect the mob to the score label to update the score upon squashing one.
+	mob.connect("squashed", $UserInterface/ScoreLabel, "_on_Mob_squashed")
 
 
 func _on_Player_hit():
