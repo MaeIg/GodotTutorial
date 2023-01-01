@@ -1,5 +1,10 @@
 extends KinematicBody
 
+
+# Emitted when the player was hit by a mob.
+signal hit
+
+
 # How fast the player moves in meters per second.
 export var speed = 14
 # The downward acceleration when in the air, in meters per second squared.
@@ -55,3 +60,10 @@ func _physics_process(delta):
 				# If so, we squash it and bounce.
 				mob.squash()
 				velocity.y = bounce_impulse
+
+func _on_MobDetector_body_entered(_body):
+	die()
+
+func die():
+	emit_signal("hit")
+	queue_free()
