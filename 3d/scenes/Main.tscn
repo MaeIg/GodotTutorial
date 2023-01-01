@@ -87,4 +87,5 @@ mesh = SubResource( 3 )
 skeleton = NodePath("../MeshInstance")
 material/0 = SubResource( 4 )
 
+[connection signal="hit" from="Player" to="." method="_on_Player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
