@@ -36,6 +36,9 @@ func _physics_process(delta):
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
 		$Pivot.look_at(translation + direction, Vector3.UP)
+		$AnimationPlayer.playback_speed = 4
+	else:
+		$AnimationPlayer.playback_speed = 1
 	
 	# Jumping.
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
@@ -46,6 +49,8 @@ func _physics_process(delta):
 	velocity.z = direction.z * speed
 	# Vertical velocity
 	velocity.y -= fall_acceleration * delta
+	# Change Pivot
+	$Pivot.rotation.x = PI / 6 * velocity.y / jump_impulse
 	# Moving the character
 	velocity = move_and_slide(velocity, Vector3.UP)
 	
